@@ -30,7 +30,7 @@ export const VideoFeed = () => {
             setHlsSupport("hls.js");
             const hls = new Hls({
                 debug: false,
-                liveSyncDurationCount: 1, // try to be about 1 segment away from the newest segment
+                liveSyncDurationCount: 2, // try to be about 2 segments away from the newest segment
                 liveMaxLatencyDurationCount: 5, // don't be more than 5 segments away from newest
                 maxLiveSyncPlaybackRate: 1.5, // allow speedup of up to 1.5x to catch up to live
             });
