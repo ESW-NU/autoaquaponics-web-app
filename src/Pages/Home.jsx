@@ -47,7 +47,7 @@ const Home = () => {
 
 			<AnimationOnScroll animateIn="animate__fadeInLeftBig" duration={1} animateOnce>
 				<AboutSection
-					title="Plumbing"
+					title="Mechanical Design"
 					images={[plumbing, sump, flow, filter]}
 					image_left={true}
 					>
