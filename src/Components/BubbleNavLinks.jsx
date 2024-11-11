@@ -5,7 +5,7 @@ import { Box } from "@mui/system";
 
 const BubbleNavLinks = ({ links }) => {
 	const linkStyle = {
-		color: "common.black",
+		color: "text.primary",
 		typography: "link",
 		px: 0,
 		py: 1,
@@ -18,7 +18,7 @@ const BubbleNavLinks = ({ links }) => {
 	const activeLinkStyle = {
 		px: 4,
 		py: 1,
-		bgcolor: "common.white",
+		bgcolor: "primary.contrastText",
 		filter: "drop-shadow(1px 1px 20px rgba(0, 0, 0, 0.2))",
 	};
 

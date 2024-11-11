@@ -5,7 +5,6 @@ const Button = forwardRef((props, ref) => {
 	return (
 		<MuiButton
 			variant="contained"
-			color="clickme"
 			sx={{
 				borderRadius: 100,
 				px: 2,

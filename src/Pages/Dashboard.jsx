@@ -31,7 +31,7 @@ const Dashboard = () => {
 	};
 
 	return (
-		<Box>
+		<Box sx={{color: "text.primary"}}>
 			<Typography variant="h2">System Sensors</Typography>
 			<Stack direction="row" alignItems="center" spacing={2}>
 				<Box sx={{ width: 200, my: 3 }}>

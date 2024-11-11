@@ -3,27 +3,25 @@
 import { useState, useContext } from 'react';
 import { NavLink, useNavigate } from "react-router-dom";
 import AccountBubble from "../Components/AccountBubble";
-import { Grid, Stack, Box, useMediaQuery, Typography, IconButton, Collapse, Tooltip, Paper, List, ListItemButton, ListItemIcon, ListItemText, Divider } from '@mui/material';
+import { Grid, Stack, Box, useMediaQuery, Typography, IconButton, Collapse, Tooltip, Paper, List, ListItemButton, ListItemIcon, ListItemText, Divider, useTheme } from '@mui/material';
 import MenuRoundedIcon from '@mui/icons-material/MenuRounded';
 import MenuOpenRoundedIcon from '@mui/icons-material/MenuOpenRounded';
 import MyButton from "../Components/Button";
 import BubbleNavLinks from './BubbleNavLinks';
-import theme from "../styling";
 import { UserContext } from "../Hooks/UserContext";
 import VideocamIcon from '@mui/icons-material/Videocam';
 import DashboardIcon from '@mui/icons-material/Dashboard';
 import BuildIcon from '@mui/icons-material/Build';
-import SettingsIcon from '@mui/icons-material/Settings';
 import NavLinksPanel from './NavLinksPanel';
 
 const links = [
 	{ addr: "/video-stream", label: "Video Stream" },
 	{ addr: "/dashboard", label: "Dashboard" },
 	{ addr: "/control-panel", label: "Control Panel" },
-	{ addr: "settings", label: "Settings" }
 ];
 
 export const NavBar = () => {
+	const theme = useTheme();
 	const isSmall = useMediaQuery(theme.breakpoints.down("md"));
 	const [open, setOpen] = useState(false);
 	const user = useContext(UserContext);
@@ -61,7 +59,6 @@ export const NavBar = () => {
 						{ label: "Video Stream", addr: "/video-stream", icon: <VideocamIcon/> },
 						{ label: "Dashboard", addr: "/dashboard", icon: <DashboardIcon/> },
 						{ label: "Control Panel", addr: "/control-panel", icon: <BuildIcon/> },
-						{ label: "Settings", addr: "/settings", icon: <SettingsIcon/> },
 					]}/>
 					<Divider sx={{ my: 2 }}/>
 				</Box>

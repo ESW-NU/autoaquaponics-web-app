@@ -50,7 +50,6 @@ const Login = () => {
 					</Typography>
 					<MuiButton
 						variant="text"
-						color="clickme"
 						sx={{ typography: "link" }}
 						onClick={() => window.open(requestFormUrl, "_blank")}
 					>
@@ -79,7 +78,6 @@ const Login = () => {
 					)}
 					<MyButton
 						variant="text"
-						color="clickme"
 						sx={{ typography: "link" }}
 						onClick={() => navigate("/reset-password")}
 					>

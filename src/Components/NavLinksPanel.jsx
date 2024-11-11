@@ -3,7 +3,7 @@ import { NavLink } from "react-router-dom";
 
 const NavLinksPanel = ({ links, fullWidth }) => {
 	const linkStyle = {
-		color: "common.black",
+		color: "text.primary",
 		typography: "link",
 		p: 2,
 	};

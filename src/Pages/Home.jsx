@@ -35,7 +35,7 @@ const Home = () => {
 		<Stack direction="column" spacing={3}>
 			<Stack direction={{ xs: "column-reverse", md: "row" }} alignItems="center">
 				<img style={{ width: "50vw" }} src={systemCAD} alt="System CAD"/>
-				<Box>
+				<Box sx={{color: "text.primary"}}>
 					<Typography variant="h1"><TypedText string={"Northwestern AutoAquaponics"} typeSpeed={40}/></Typography>
 					<Typography variant="body1">
 						A fully automated aquaponic system that grows both fish and plants
@@ -47,7 +47,7 @@ const Home = () => {
 
 			<AnimationOnScroll animateIn="animate__fadeInLeftBig" duration={1} animateOnce>
 				<AboutSection
-					title="Plumbing"
+					title="Mechanical Design"
 					images={[plumbing, sump, flow, filter]}
 					image_left={true}
 					>
