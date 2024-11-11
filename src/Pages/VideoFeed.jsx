@@ -8,7 +8,7 @@ export const VideoFeed = () => {
     const streamUrlInputRef = useRef();
     // the below state is an object so that, even if the value remains the same,
     // if the user presses reload stream it will actually rerun the Effect
-    const [activeStreamUrl, setActiveStreamUrl] = useState({ value: "https://content.jwplatform.com/manifests/yp34SRmf.m3u8" });
+    const [activeStreamUrl, _setActiveStreamUrl] = useState({ value: "https://controller.autoaquaponics.org/stream.m3u8" });
     const [hlsSupport, setHlsSupport] = useState("pending");
 
     useEffect(() => {
@@ -73,21 +73,8 @@ export const VideoFeed = () => {
         <div>
             {hlsSupport == "pending" ? (
                 <Alert severity="info">Detecting HLS support...</Alert>
-            ) : hlsSupport == "none" ? (
+            ) : hlsSupport == "none" && (
                 <Alert severity="error">HLS is not supported in your browser</Alert>
-            ) : (
-                <Box>
-                    <TextField
-                        id="stream-url"
-                        label="stream url"
-                        inputRef={streamUrlInputRef}
-                        defaultValue={activeStreamUrl.value}
-                    />
-                    <Button
-                        onClick={() => setActiveStreamUrl({ value: streamUrlInputRef.current.value })}
-                        variant="contained"
-                    >Reload stream</Button>
-                </Box>
             )}
             <div ref={videoDivRef} width="100%"></div>
         </div>
