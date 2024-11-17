@@ -18,6 +18,7 @@ import Settings from "./Pages/Settings";
 import Login from './Pages/Login';
 import ResetPassword from './Pages/ResetPassword';
 import ComingSoon from './Components/ComingSoon';
+import { VideoFeed } from './Pages/VideoFeed';
 
 const TRACKING_ID = "G-XQDHE464FW";
 ReactGA.initialize(TRACKING_ID);
@@ -27,7 +28,7 @@ const App = () => {
 
 	const [user, setUser] = useState(null);
 	const [themeName, setThemeName] = useState('light');
-		
+
 
 	useEffect(() => {
 		const unsubscribe = onAuthStateChanged(auth, (user) => {
@@ -47,7 +48,7 @@ const App = () => {
 	const setThemeNameShim = (newThemeName) => {
 		setThemeName(newThemeName);
 	  };
-	
+
 	  const { muiTheme, bgcolor } = getTheme(themeName, prefersDarkMode);
 
 	  useEffect(() => {
@@ -67,7 +68,7 @@ const App = () => {
 							<Container maxWidth="xl">
 								<Routes>
 									<Route path="/" element={<Home/>}/>
-									<Route path="/video-stream" element={<ComingSoon/>}/>
+									<Route path="/video-stream" element={<VideoFeed/>}/>
 									<Route path="/dashboard" element={<Dashboard/>}/>
 									<Route path="/control-panel/*" element={<ControlPanel/>}/>
 									<Route path="/settings" element={<Settings/>}/>
