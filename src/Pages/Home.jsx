@@ -124,7 +124,7 @@ const Home = () => {
 					images={[team]}
 					image_left={true}
 				>
-					Send us a message: <Link target='_blank' href='mailto:contact.eswnu@gmail.com'>contact.eswnu@gmail.com</Link>.
+					Send us a message: <Link target='_blank' href='mailto:esw@u.northwestern.edu'>esw@u.northwestern.edu</Link>.
 					<br/>
 					See our Project Blog <Link target='_blank' href='https://eswprojects.planio.com/projects/autoaquaponics'>here</Link>.
 					<br/>
