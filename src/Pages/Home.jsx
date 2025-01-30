@@ -75,7 +75,7 @@ const Home = () => {
 					intervals and control how much light our plants get. The outlet box also communicates with
 					our sensor box via Bluetooth Low Energy. The sensor box contains a Raspberry Pi and a
 					number of environmental sensors (pH, TDS, air/water temperature, relative humidity, water
-					level) to help us understand the state of the system in real time. The Raspberry Pi pushes
+					level, and dissolved oxygen) to help us understand the state of the system in real time. The Raspberry Pi pushes
 					the sensor data to a remote Firebase database, which can be seen on the Dashboard page.
 				</AboutSection>
 			</AnimationOnScroll>

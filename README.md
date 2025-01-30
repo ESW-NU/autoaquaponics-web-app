@@ -36,7 +36,7 @@ Coming soon.
 
 ### Dashboard
 
-The dashboard contains a number of live graphs showing the output of the sensors connected to the system. It monitors six parameters: total dissolved solids, air temperature, water level, humidity, pH, and water temperature. The latest value from the sensors are also displayed on the top right corner of the corresponding graph card. When the values of a parameter is within the specific tolerances (see Control Panel below), the graph is green; else it is red. The timescale over which the graphs display data can be selected (between values of one hour, one day, or one week). Because the sensors are often missing data (*cough* electronics team), there is a switch to trim the time interval of the graphs to only that for which there is existing data.
+The dashboard contains a number of live graphs showing the output of the sensors connected to the system. It monitors seven parameters: total dissolved solids, air temperature, water level, humidity, pH, water temperature, and dissolved oxygen. The latest value from the sensors are also displayed on the top right corner of the corresponding graph card. When the values of a parameter is within the specific tolerances (see Control Panel below), the graph is green; else it is red. The timescale over which the graphs display data can be selected (between values of one hour, one day, or one week). Because the sensors are often missing data (*cough* electronics team), there is a switch to trim the time interval of the graphs to only that for which there is existing data.
 
 ### Control Panel
 
