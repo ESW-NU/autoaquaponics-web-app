@@ -8,7 +8,7 @@ export const VideoFeed = () => {
     const streamUrlInputRef = useRef();
     // the below state is an object so that, even if the value remains the same,
     // if the user presses reload stream it will actually rerun the Effect
-    const [activeStreamUrl, _setActiveStreamUrl] = useState({ value: "https://controller.autoaquaponics.org/stream.m3u8" });
+    const [activeStreamUrl, _setActiveStreamUrl] = useState({ value: "https://controller.autoaquaponics.org/stream/stream.m3u8" });
     const [hlsSupport, setHlsSupport] = useState("pending");
 
     useEffect(() => {
