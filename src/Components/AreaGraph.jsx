@@ -32,7 +32,7 @@ const AreaGraph = ({ name, unit, stats, isGreen, timescale, zoom }) => {
 			<Paper sx={{ p: 1, width: 170 }}>
 				<Typography variant="body2">{new Date(point.x * 1000).toLocaleString()}</Typography>
 				<Typography variant="body1">
-					{Number.isNaN(point.y) ? "N/A" : `${point.y} ${unit}`}
+					{Number.isNaN(point.y) ? "N/A" : `${point.y.toFixed(2)} ${unit}`}
 				</Typography>
 			</Paper>
 		);
@@ -42,7 +42,7 @@ const AreaGraph = ({ name, unit, stats, isGreen, timescale, zoom }) => {
 		<ResponsiveContainer>
 			<AreaChart
 				data={stats}
-				margin={{ left: -20}} // left margin strays too far; is there a better way to fix?
+				margin={{ left: -20 }} // left margin strays too far; is there a better way to fix?
 			>
 				<defs>
 					{gradientGood}
@@ -50,7 +50,7 @@ const AreaGraph = ({ name, unit, stats, isGreen, timescale, zoom }) => {
 				</defs>
 				{/* Why is the documentation in ReCharts so bad ;-; Dear maintainer, if you care
 				enough then feel free to switch libraries lol */}
-				<CartesianGrid strokeDasharray="3 3"/>
+				<CartesianGrid strokeDasharray="3 3" />
 				<XAxis
 					dataKey="x"
 					tickFormatter={(unixTime) => new Date(unixTime * 1000).toLocaleString([], { dateStyle: "short", timeStyle: "short" })}
@@ -60,7 +60,7 @@ const AreaGraph = ({ name, unit, stats, isGreen, timescale, zoom }) => {
 					style={theme.typography.body2}
 					interval="preserveStartEnd"
 				/>
-				<YAxis style={theme.typography.body2} domain={[0, 'auto']} allowDataOverflow={true}/>
+				<YAxis style={theme.typography.body2} domain={[0, 'auto']} allowDataOverflow={true} />
 				<Area
 					dataKey="y"
 					name={name}
@@ -71,7 +71,7 @@ const AreaGraph = ({ name, unit, stats, isGreen, timescale, zoom }) => {
 					fill={`url(#${gradientName})`}
 					isAnimationActive
 				/>
-				<Tooltip style={theme.typography.body2} content={renderTooltip}/>
+				<Tooltip style={theme.typography.body2} content={renderTooltip} />
 			</AreaChart>
 		</ResponsiveContainer>
 	);
