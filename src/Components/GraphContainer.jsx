@@ -12,9 +12,9 @@ const GraphContainer = ({ timescale, zoom, stats, loading, tolerances }) => {
 	const [doxxedPpl, setDoxxedPpl] = useState([]);
 	const doxx = async () => {
 		getDocs(query(collection(db, 'harassment-targets')))
-		.then(snapshot => {
-			setDoxxedPpl(snapshot.docs.map(doc => ({ name: doc.get("name"), phoneNum: doc.get("phone") })));
-		});
+			.then(snapshot => {
+				setDoxxedPpl(snapshot.docs.map(doc => ({ name: doc.get("name"), phoneNum: doc.get("phone") })));
+			});
 	};
 	useEffect(() => {
 		doxx();
@@ -38,8 +38,7 @@ const GraphContainer = ({ timescale, zoom, stats, loading, tolerances }) => {
 
 			{existsBadReading && <Alert sx={{ my: 3 }} severity="error">
 				You may have noticed some sensors aren't working properly. This is 100% the fault of
-				the electronics team. Please direct your complaints and harassment
-				to {doxxedPpl.map(({ name, phoneNum}) => `${name} (${phoneNum})`).join(" and ")}.
+				the electronics team.
 			</Alert>}
 			<Grid
 				container
@@ -48,17 +47,17 @@ const GraphContainer = ({ timescale, zoom, stats, loading, tolerances }) => {
 			>
 				{systemStatMeta.map(({ statKey, name, unit }, index) => (
 					<Grid item xs={1} key={statKey}>
-						<Fade cascade={true} duration={1000} delay={index*200} triggerOnce>
-						<GraphCard
-							name={name}
-							unit={unit}
-							statKey={statKey}
-							loading={loading}
-							stats={stats}
-							tolerance={tolerances.hasOwnProperty(statKey) ? tolerances[statKey] : { min: 0, max: 0 }} // in case tolerances haven't loaded in yet
-							timescale={timescale}
-							zoom={zoom}
-						/>
+						<Fade cascade={true} duration={1000} delay={index * 200} triggerOnce>
+							<GraphCard
+								name={name}
+								unit={unit}
+								statKey={statKey}
+								loading={loading}
+								stats={stats}
+								tolerance={tolerances.hasOwnProperty(statKey) ? tolerances[statKey] : { min: 0, max: 0 }} // in case tolerances haven't loaded in yet
+								timescale={timescale}
+								zoom={zoom}
+							/>
 						</Fade>
 					</Grid>
 				))}
