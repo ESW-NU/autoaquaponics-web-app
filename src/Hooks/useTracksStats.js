@@ -23,50 +23,51 @@ Data type of tolerances: {
 }
 */
 
-function generateMockData(numPoints, finalStats) {
-	const now = Math.floor(Date.now() / 1000);
-	const data = [];
-	const currentData = finalStats;
-	for (let i = 0; i < numPoints; i++) {
-		data.push({
-			unixTime: now - i * 60 * 5, // go back 5 minutes each time
-			stats: {
-				...currentData,
-			},
-		});
-
-		// modify currentData by some random amount for each stat
-		for (const statKey in currentData) {
-			currentData[statKey] += currentData[statKey] * (Math.random() * 0.1 - 0.05);
-		}
-	}
-	return data.reverse();
-}
-
 export function useTrackStats(timescale) {
-	const stats = generateMockData(12, {
-		TDS: 212,
-		air_temp: 25,
-		distance: 49.8,
-		humidity: 73,
-		pH: 8.1,
-		water_temp: 25,
-		dissolved_oxygen: 7
-	});
-	console.log(stats);
-	return {
-		loading: false,
-		stats: stats,
-		tolerances: {
-			"TDS": { min: 100, max: 300 },
-			"air_temp": { min: 20, max: 30 },
-			"distance": { min: 0, max: 98 },
-			"humidity": { min: 0, max: 95 },
-			"pH": { min: 6, max: 8 },
-			"water_temp": { min: 20, max: 30 },
-			"dissolved_oxygen": { min: 5, max: 9 },
+	const [loading, setLoading] = useState(true);
+
+	// get stats
+	const [stats, setStats] = useState([]);
+	useEffect(() => {
+		setLoading(true);
+		const lowerTimeBound = Math.floor(Date.now() / 1000) - timescale;
+		const q_states = query( // the data we want to fetch
+			collection(db, 'stats'),
+			where('unix_time', '>', lowerTimeBound),
+			orderBy('unix_time', 'asc')
+		);
+		const unsubscribe = onSnapshot(q_states, (snapshot) => { // real-time listener for changes to the queried stats data
+			setStats(convertStatsSnapshot(snapshot)); //this is the initial data fetch
+			setLoading(false);
+		});
+		const timer = setInterval(() => {
+			const lowerTimeBoundNow = Math.floor(Date.now() / 1000) - timescale;
+			// filter the stats to only include data from the last [timescale] seconds
+			setStats(prevStats => prevStats.filter((stat) => stat.unixTime > lowerTimeBoundNow));
+		}, 60 * 1000); // 1 min
+
+		// make sure to unsubscribe when the component unmounts so that we don't have a bunch of listeners running
+		return () => {
+			unsubscribe();
+			clearInterval(timer);
 		}
-	};
+	}, [timescale]);
+
+	// get tolerances
+	const [tolerances, setTolerances] = useState({});
+	useEffect(() => {
+		const q_tolerances = query(
+			collection(db, 'tolerances')
+		)
+		const unsubscribe = onSnapshot(q_tolerances, (snapshot) => {
+			setTolerances(convertTolerancesSnapshot(snapshot))
+		});
+		return () => {
+			unsubscribe();
+		}
+	}, []);
+
+	return { loading, stats, tolerances };
 }
 
 /*
