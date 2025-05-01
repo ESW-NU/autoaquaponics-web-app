@@ -2,7 +2,7 @@
 
 AutoAquaponics v2.0 is a web-based application for monitoring and controlling the physical AutoAquaponics system, created and maintained by Engineers for a Sustainable World (ESW) at Northwestern University. You can read more about AutoAquaponics [here](https://esw-nu.github.io/pages/auto-aquaponics.html). The application is intended to allow members of ESWNU to remotely manage the system, as well as for members of the general public to view and learn more about it.
 
-The currently deployed iteration of the website (reflected by the `deploy` branch) is hosted at https://autoaquaponics.org/.
+The currently deployed iteration of the website (reflected by the latest release) is hosted at https://autoaquaponics.org/.
 
 ## Technologies
 
