@@ -10,6 +10,7 @@ export const systemStatMeta = [
 	{ statKey: "pH", name: "pH", unit: "" },
 	{ statKey: "water_temp", name: "Water Temperature", unit: "ºC" },
 	{ statKey: "dissolved_oxygen", name: "Dissolved Oxygen", unit: "mg/L" },
+	{ statKey: "flow", name: "Flow Rate", unit: "gal/min"}
 ];
 
 /*
