@@ -37,7 +37,7 @@ const Home = () => {
 			<Stack direction={{ xs: "column-reverse", md: "row" }} alignItems="center">
 				<img style={{ width: "50vw" }} src={systemCAD} alt="System CAD" />
 				<Box sx={{ color: "text.primary" }}>
-					<Typography variant="h1"><TypedText string={"Northwestern AutoAquaponics"} typeSpeed={40} /></Typography>
+					<Typography variant="h1"><TypedText string={"Hello"} typeSpeed={40} /></Typography>
 					<Typography variant="body1">
 						A fully automated aquaponic system that grows both fish and plants
 						unattended for months and can be <Link component={RouterLink} to="/dashboard">monitored</Link> and <Link component={RouterLink} to="/control-panel">controlled</Link> remotely
