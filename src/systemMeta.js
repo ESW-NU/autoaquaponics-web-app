@@ -3,11 +3,12 @@ Each element in this array represents a statistic that the dashboard will track 
 tolerances control page will control; updating this object will cause both pages to change too
 */
 export const systemStatMeta = [
+	{ statKey: "pH", name: "pH", unit: "" },
+	{ statKey: "flow", name: "Flow Rate", unit: "gal/min" },
 	{ statKey: "TDS", name: "Total Dissolved Solids", unit: "ppm" },
-	{ statKey: "air_temp",  name: "Air Temperature", unit: "ºC" },
+	{ statKey: "air_temp", name: "Air Temperature", unit: "ºC" },
 	{ statKey: "distance", name: "Water Level", unit: "cm" },
 	{ statKey: "humidity", name: "Humidity", unit: "%" },
-	{ statKey: "pH", name: "pH", unit: "" },
 	{ statKey: "water_temp", name: "Water Temperature", unit: "ºC" },
 	{ statKey: "dissolved_oxygen", name: "Dissolved Oxygen", unit: "mg/L" },
 	{ statKey: "flow", name: "Flow Rate", unit: "gal/min"}
@@ -19,7 +20,7 @@ Each element in this array represents a component of the system whose lights can
 export const systemLightsMeta = [
 	{ partKey: "shelf1", name: "Shelf 1" },
 	{ partKey: "shelf2", name: "Shelf 2" },
-	{ partKey: "fish-tank", name: "Fish Tank"},
+	{ partKey: "fish-tank", name: "Fish Tank" },
 	{ partKey: "basking", name: "Basking" },
 ];
 
