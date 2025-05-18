@@ -4,14 +4,13 @@ tolerances control page will control; updating this object will cause both pages
 */
 export const systemStatMeta = [
 	{ statKey: "pH", name: "pH", unit: "" },
-	{ statKey: "flow", name: "Flow Rate", unit: "gal/min" },
+	{ statKey: "flow", name: "Flow Rate", unit: "gal/hr" },
 	{ statKey: "TDS", name: "Total Dissolved Solids", unit: "ppm" },
 	{ statKey: "air_temp", name: "Air Temperature", unit: "ºC" },
 	{ statKey: "distance", name: "Water Level", unit: "cm" },
 	{ statKey: "humidity", name: "Humidity", unit: "%" },
 	{ statKey: "water_temp", name: "Water Temperature", unit: "ºC" },
 	{ statKey: "dissolved_oxygen", name: "Dissolved Oxygen", unit: "mg/L" },
-	{ statKey: "flow", name: "Flow Rate", unit: "gal/min"}
 ];
 
 /*
