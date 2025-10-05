@@ -3,18 +3,18 @@ import { useState, useTransition } from "react";
 import SelectMenu from "../Components/SelectMenu";
 import GraphContainer from "../Components/GraphContainer";
 import { saveAs } from 'file-saver';
-import { useTrackStats } from '../Hooks/useTracksStats';
+import { useTrackStats, getStatsOnce } from '../Hooks/useTracksStats';
 
 const timescaleOptions = [ // in seconds, not milliseconds
-	{ value: 60 * 60, display: "1 hour" },
-	{ value: 24 * 60 * 60, display: "1 day" },
-	{ value: 7 * 24 * 60 * 60, display: "1 week" },
-];
+	{ value: { name: "1 hour", value: 60 * 60}, display: "1 hour" },
+	{ value: { name: "1 day", value: 24 * 60 * 60}, display: "1 day" },
+	{ value: { name: "1 week", value: 7 * 24 * 60 * 60}, display: "1 week" },
+]
 
 const Dashboard = () => {
 	const [zoom, setZoom] = useState(false); // whether to zoom in on available portion of graph
 	const [timescale, setTimescale] = useState(timescaleOptions[0].value);
-	const { loading, stats, tolerances } = useTrackStats(timescale); // fetch the stats using the useTrackStats hook
+	const { loading, stats, tolerances } = useTrackStats(timescale.value); // fetch the stats using the useTrackStats hook
 
 	const downloadCSV = () => {
 		if (!stats || stats.length === 0) {
@@ -26,6 +26,15 @@ const Dashboard = () => {
 		let csvContent = "data:text/csv;charset=utf-8,\n";
 		csvContent += ["unixTime", ...Object.keys(stats[0].stats)].join(",") + "\n";
 		csvContent += stats.map(row => [row.unixTime, ...Object.values(row.stats)].join(",")).join("\n");
+		const blob = new Blob([csvContent], { type: 'text/csv' });
+		saveAs(blob, 'exportedData.csv');
+	};
+
+	const downloadCSV1yr = async () => {
+		const statsOneYear = await getStatsOnce()
+		let csvContent = "data:text/csv;charset=utf-8,\n";
+		csvContent += ["unixTime", ...Object.keys(statsOneYear[0].stats)].join(",") + "\n";
+		csvContent += statsOneYear.map(row => [row.unixTime, ...Object.values(row.stats)].join(",")).join("\n");
 		const blob = new Blob([csvContent], { type: 'text/csv' });
 		saveAs(blob, 'exportedData.csv');
 	};
@@ -51,13 +60,15 @@ const Dashboard = () => {
 					onChange={() => setZoom(!zoom)}
 				/>
 				<Button onClick={downloadCSV} variant="contained" color="primary">
-					Export as CSV
+					Export as CSV ({timescale.name})
+				</Button>
+				<Button onClick={downloadCSV1yr} variant="contained" color="primary">
+					Export as CSV (1 year)
 				</Button>
 			</Stack>
-			<GraphContainer timescale={timescale} zoom={zoom} stats={stats} loading={loading} tolerances={tolerances}/>
+			<GraphContainer timescale={timescale.value} zoom={zoom} stats={stats} loading={loading} tolerances={tolerances}/>
 		</Box>
 	);
 };
-
 
 export default Dashboard;

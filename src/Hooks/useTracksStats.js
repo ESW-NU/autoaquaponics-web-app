@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { collection, query, orderBy, where, onSnapshot } from "firebase/firestore";
+import { collection, query, orderBy, where, onSnapshot, getDocs } from "firebase/firestore";
 import { db } from '../firebase';
 import { systemStatMeta } from "../systemMeta";
 
@@ -70,6 +70,17 @@ export function useTrackStats(timescale) {
 	return { loading, stats, tolerances };
 }
 
+async function getStatsOnce () {
+	const q_states = query( // the data we want to fetch
+		collection(db, 'stats'),
+		where('unix_time', '>', Math.floor(Date.now() / 1000) - (7 * 24 * 60 * 60 * 52)),
+		orderBy('unix_time', 'asc')
+	);
+	const snapshot = await getDocs(q_states);
+	console.log(snapshot)
+	return convertStatsSnapshot(snapshot)
+}
+
 /*
 Takes an snapshot of the 'stats' collection on Firestore and converts it to an array of objects
 each representing the stats at a certain time.
@@ -88,3 +99,5 @@ stat keys to their tolerances.
 function convertTolerancesSnapshot(snapshot) {
 	return Object.fromEntries(snapshot.docs.map(doc => [doc.id, doc.data()]));
 }
+
+export {getStatsOnce};
