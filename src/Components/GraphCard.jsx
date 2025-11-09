@@ -32,7 +32,7 @@ const GraphCard = ({ name, unit, statKey, loading, stats, tolerance, timescale, 
 			<Typography variant="body1">Loading</Typography>
 		</Box>
 	) : hasData ? (
-		<AreaGraph name={name} unit={unit} stats={data} isGreen={inRange} timescale={timescale} zoom={zoom} />
+		<AreaGraph name={name} unit={unit} stats={data} isGreen={inRange} tolerance={tolerance} timescale={timescale} zoom={zoom} />
 	) : (
 		<Box sx={verticalCenteredStyle}>
 			<WarningAmberIcon color="warning" sx={{ fontSize: 128 }} />

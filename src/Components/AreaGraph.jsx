@@ -18,7 +18,7 @@ const gradientBad = (
 	</linearGradient>
 );
 
-const AreaGraph = ({ name, unit, stats, isGreen, timescale, zoom }) => {
+const AreaGraph = ({ name, unit, stats, isGreen, tolerance, timescale, zoom }) => {
 	const theme = useTheme();
 
 	const [color, gradientName] = isGreen ? [colorGood, gradientGoodName] : [colorBad, gradientBadName];
@@ -37,6 +37,8 @@ const AreaGraph = ({ name, unit, stats, isGreen, timescale, zoom }) => {
 			</Paper>
 		);
 	};
+	const yMin = stats.reduce((min, stat) => Math.min(min, stat.y), tolerance.min);
+	const yMax = stats.reduce((max, stat) => Math.max(max, stat.y), tolerance.max);
 
 	return (
 		<ResponsiveContainer>
@@ -60,7 +62,7 @@ const AreaGraph = ({ name, unit, stats, isGreen, timescale, zoom }) => {
 					style={theme.typography.body2}
 					interval="preserveStartEnd"
 				/>
-				<YAxis style={theme.typography.body2} domain={[0, 'auto']} allowDataOverflow={true} />
+				<YAxis style={theme.typography.body2} domain={[yMin, yMax]} allowDataOverflow={true} />
 				<Area
 					dataKey="y"
 					name={name}
