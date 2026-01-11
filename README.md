@@ -28,22 +28,22 @@ Running `npm run build` in the project directory will create an optimized produc
 
 ### Home page
 
-The home page contains an overview of the AutoAquaponics system and the subteams responsible for maintaining it, as well as contaact information and a link to our blog.
+The home page contains an overview of the AutoAquaponics system and the subteams responsible for maintaining it, as well as contact information and a link to our blog.
 
 ### Video Stream
 
-Coming soon.
+The video stream contains live footage of the AutoAquaponics system.
 
 ### Dashboard
 
-The dashboard contains a number of live graphs showing the output of the sensors connected to the system. It monitors seven parameters: total dissolved solids, air temperature, water level, humidity, pH, water temperature, and dissolved oxygen. The latest value from the sensors are also displayed on the top right corner of the corresponding graph card. When the values of a parameter is within the specific tolerances (see Control Panel below), the graph is green; else it is red. The timescale over which the graphs display data can be selected (between values of one hour, one day, or one week). Because the sensors are often missing data (*cough* electronics team), there is a switch to trim the time interval of the graphs to only that for which there is existing data.
+The dashboard contains a number of live graphs showing the output of the sensors connected to the system. It monitors seven parameters: total dissolved solids, air temperature, water level, humidity, pH, water temperature, and dissolved oxygen. The latest value from the sensors are also displayed on the top right corner of the corresponding graph card. When the values of a parameter is within the specific tolerances (see Control Panel below), the graph is green; else it is red. The timescale over which the graphs display data can be selected (between values of one hour, one day, or one week). Because the sensors are often missing data (*cough* electronics team), there is a switch to trim the time interval of the graphs to only that for which there is existing data. Sensor data over the last hour or year can be exported as a csv file using one of the buttons next to the timescale options.
 
 ### Control Panel
 
 The control panel displays the current control configuration being used by the system.
 - The **Tolerances** page specifies a range over which a certain monitored parameter (e.g. pH level) is considered "good." This determines the color of the corresponding graph in the dashboard, as well as alerts sent to certain "emergency contacts" should a parameter value go out of range.
 - The **Backwashing** page refers to ~~the automatic reversal of the quantum fish field caused by buildup of marine nuclear waste~~. The backwashing hardware is currently not working.
-- The **Fish feeder** page controls the fish feeder :brain:. The fish feeder is currently in development.
+- The **Fish feeder** page controls the fish feeder. The fish feeder is currently in development.
 - The **Lights** page controls the lighting of individual parts of the system. The lights can be turned on, turned off, or set on a timer to turn on for a certain duration at a certain time of day.
 - The **Water Pump** page controls the water pumps that feed into the grow beds. The pumps can be turned on, turned off, or set on a timer to pump for a specific time.
 
