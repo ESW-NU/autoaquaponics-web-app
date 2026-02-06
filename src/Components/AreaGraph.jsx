@@ -62,7 +62,7 @@ const AreaGraph = ({ name, unit, stats, isGreen, tolerance, timescale, zoom }) =
 					style={theme.typography.body2}
 					interval="preserveStartEnd"
 				/>
-				<YAxis style={theme.typography.body2} domain={[yMin, yMax]} allowDataOverflow={true} />
+				<YAxis style={theme.typography.body2} domain={[yMin, yMax]} tickFormatter={(value) => value.toFixed(1)} allowDataOverflow={true} />
 				<Area
 					dataKey="y"
 					name={name}
