@@ -1,12 +1,12 @@
 # AutoAquaponics v2.0
 
-AutoAquaponics v2.0 is a web-based application for monitoring and controlling the physical AutoAquaponics system, created and maintained by Engineers for a Sustainable World (ESW) at Northwestern University. You can read more about AutoAquaponics [here](https://esw-nu.github.io/pages/auto-aquaponics.html). The application is intended to allow members of ESWNU to remotely manage the system, as well as for members of the general public to view and learn more about it.
+AutoAquaponics v2.0 is a web-based application for monitoring and controlling the physical AutoAquaponics system, created and maintained by Engineers for a Sustainable World (ESW) at Northwestern University. You can read more about AutoAquaponics [here](https://esw-nu.github.io/pages/auto-aquaponics.html). The application is intended to allow members of ESWNU to remotely manage the system, as well as for the public to view and learn more about it.
 
 The currently deployed iteration of the website (reflected by the latest release) is hosted at https://autoaquaponics.org/.
 
 ## Technologies
 
-The frontend uses the React framework, with [Material UI](https://mui.com/) providing the main interface components and [Recharts](https://recharts.org/en-US) providing graphing capabilities. [Firebase](https://firebase.google.com/) is used as the backend for user authentication, app authentication (with App Check), database (with Firestore), and hosting. The database is the primary method of communication between the web app and the physical system. For example, the system writes the data it collects to the database which is then displayed by the web app's dashboard; the web app's control panel writes its changes to the database which are picked up by the system.
+The frontend uses the React framework, with [Material UI](https://mui.com/) providing the main interface components and [Recharts](https://recharts.org/en-US) graphing capabilities. [Firebase](https://firebase.google.com/) is used as the backend for user authentication, app authentication (with App Check), database (with Firestore), and hosting. The database is the primary method of communication between the web app and the physical system. For example, the system writes the data it collects to the database which is then displayed by the web app's dashboard; the web app's control panel writes its changes to the database which are picked up by the system.
 
 ## Building and running
 
@@ -26,7 +26,7 @@ Running `npm run build` in the project directory will create an optimized produc
 
 ## Oveview of features
 
-### Home page
+### Home Page
 
 The home page contains an overview of the AutoAquaponics system and the subteams responsible for maintaining it, as well as contact information and a link to our blog.
 
@@ -36,23 +36,19 @@ The video stream contains live footage of the AutoAquaponics system.
 
 ### Dashboard
 
-The dashboard contains a number of live graphs showing the output of the sensors connected to the system. It monitors seven parameters: total dissolved solids, air temperature, water level, humidity, pH, water temperature, and dissolved oxygen. The latest value from the sensors are also displayed on the top right corner of the corresponding graph card. When the values of a parameter is within the specific tolerances (see Control Panel below), the graph is green; else it is red. The timescale over which the graphs display data can be selected (between values of one hour, one day, or one week). Because the sensors are often missing data (*cough* electronics team), there is a switch to trim the time interval of the graphs to only that for which there is existing data. Sensor data over the last hour or year can be exported as a csv file using one of the buttons next to the timescale options.
+The dashboard contains a number of live graphs showing the output of the sensors connected to the system. It monitors seven parameters: total dissolved solids, air temperature, water level, humidity, pH, water temperature, and dissolved oxygen. The latest value from the sensors are also displayed on the top right corner of the corresponding graph card. When the values of a parameter is within the specific tolerances (see Control Panel below), the graph is green; else it is red. The timescale over which the graphs display data can be selected (between values of one hour, one day, or one week). Because the sensors are often missing data (*cough* electronics team), there is a switch to trim the time interval of the graphs to only that for which there is existing data. Sensor data over the last hour or year can be exported as a .csv file using one of the buttons next to the timescale options.
 
 ### Control Panel
 
 The control panel displays the current control configuration being used by the system.
 - The **Tolerances** page specifies a range over which a certain monitored parameter (e.g. pH level) is considered "good." This determines the color of the corresponding graph in the dashboard, as well as alerts sent to certain "emergency contacts" should a parameter value go out of range.
-- The **Backwashing** page refers to ~~the automatic reversal of the quantum fish field caused by buildup of marine nuclear waste~~. The backwashing hardware is currently not working.
+- The **Backwashing** page is currently in development.
 - The **Fish feeder** page controls the fish feeder. The fish feeder is currently in development.
 - The **Lights** page controls the lighting of individual parts of the system. The lights can be turned on, turned off, or set on a timer to turn on for a certain duration at a certain time of day.
 - The **Water Pump** page controls the water pumps that feed into the grow beds. The pumps can be turned on, turned off, or set on a timer to pump for a specific time.
 
 Logged in users will be able to change these configuration values and save their changes to the system.
 
-### Settings
+# Legacy Version
 
-Coming soon.
-
-# Why 2.0?
-
-In ye olden days, members of the ESWNU AutoAquaponics team would have to remotely access (via VNC Viewer) a single computer connected directly to the system in order to monitor and control it. This rather clunky method meant that only one person could log in at a time; two people logged in at the same time could literally see the each other moving the computer's cursor. AutoAquaponics v2.0 is our answer to this issue. It allows multiple team members, plus the general public, to interact with the system (and with a much prettier user interface too!). The code for AutoAquaponics v1.0 can be found [here](https://github.com/ESW-NU/AutoAquaponics).
+Before 2.0, members of the ESWNU AutoAquaponics team would have to remotely access (via VNC Viewer) a single computer connected directly to the system in order to monitor and control it. This rather clunky method meant that only one person could log in at a time; two people logged in at the same time could literally see the each other moving the computer's cursor. AutoAquaponics v2.0 is our answer to this issue. It allows multiple team members, plus the general public, to interact with the system (and with a much prettier user interface too!). The code for AutoAquaponics v1.0 can be found [here](https://github.com/ESW-NU/AutoAquaponics).
